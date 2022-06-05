@@ -1,10 +1,16 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import Home from './pages/Home.jsx';
-import { Routes, Route, Switch } from 'react-router-dom';
+import DogsTable from './pages/DogsTable.jsx';
+
 function NavRoutes() {
   return (
-    <Switch>
-      <Route path="/" element={<Home />} />;
-    </Switch>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/dogs" element={<DogsTable />} />
+      </Routes>
+    </Router>
   );
 }
 
