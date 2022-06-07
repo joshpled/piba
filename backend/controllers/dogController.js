@@ -6,26 +6,32 @@ const { nanoid } = require('nanoid');
 // @route GET /api/dogs
 // @access Private
 const getDogs = asyncHandler(async (req, res) => {
-  const dogs = await Dog.find();
-  res.status(200).json(dogs);
+  try {
+    const dogs = await Dog.find();
+    res.status(200).json(dogs);
+  } catch (error) {
+    throw new Error(error);
+  }
 });
 
-// @desc  set Dog
+// @desc  Set Dog
 // @route POST /api/dogs
 // @access Private
 const setDog = asyncHandler(async (req, res) => {
   if (!req.body) {
-    throw new Error('Please add text');
+    throw new Error('Must include a json object');
   }
-
   console.log(req.body);
-  const dog = await Dog.create(req.body);
-
-  res.status(200).json(dog);
+  try {
+    const dog = await Dog.create({ ...req.body, internalId: nanoid() });
+    res.status(200).json(dog);
+  } catch (error) {
+    throw new Error(error);
+  }
 });
 
 // @desc  Update Dog
-// @route PUT /api/dog
+// @route PUT /api/dog/:id
 // @access Private
 const updateDog = asyncHandler(async (req, res) => {
   const dog = await Dog.findById(req.params.id);
@@ -37,8 +43,8 @@ const updateDog = asyncHandler(async (req, res) => {
   res.status(200).json(updatedDog);
 });
 
-// @desc  Get Dogs
-// @route GET /api/dogs
+// @desc  Delete Dog
+// @route DELETE /api/dog/:id
 // @access Private
 const deleteDog = asyncHandler(async (req, res) => {
   const dog = await Dog.findById(req.params.id);

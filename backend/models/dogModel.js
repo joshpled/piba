@@ -2,12 +2,12 @@ const mongoose = require('mongoose');
 
 const dogSchema = mongoose.Schema(
   {
-    // internalId: {
-    //   type: Number,
-    //   unique: true,
-    //   immutable: true,
-    //   required: true,
-    // },
+    internalId: {
+      type: String,
+      unique: true,
+      immutable: true,
+      required: true,
+    },
     name: {
       type: String,
       lowercase: true,
@@ -17,61 +17,62 @@ const dogSchema = mongoose.Schema(
       type: String,
       default: 'Dog',
       immutable: true,
-      // required: true,
+      required: true,
     },
     currentLocation: {
       type: String,
-      // required: [true, 'Add a Location'],
+      required: [true, 'Add a Location'],
     },
     sex: {
       type: String,
-      // required: [true, 'Male or Female?'],
+      required: [true, 'Male or Female?'],
     },
     status: {
       type: String,
-      // required: [true, 'Choose a status'],
+      required: [true, 'Choose a status'],
     },
     currentWeightPounds: {
       type: Number,
-      // required: [true, 'Add weight'],
+      required: [true, 'Add weight'],
     },
     size: {
       type: String,
-      // required: [true, 'Set a size category'],
+      required: [true, 'Set a size category'],
     },
     dateOfBirth: {
       type: Date,
+      required: [true, 'Set a Birth Date'],
     },
-    // photos: {
-    //   type: [String],
-    // },
-    // videos: {
-    //   type: [String],
-    // },
-    // breed: {
-    //   type: String,
-    //   required: [true, 'Set a breed'],
-    // },
-    // color: {
-    //   type: String,
-    //   required: [true, 'Set a color'],
-    // },
-    // pattern: {
-    //   type: String,
-    //   required: [true, 'Set a pattern'],
-    // },
-    // adoptionFeeGroup: {
-    //   type: String,
-    //   required: [true, 'Set an adoption fee group'],
-    // },
-    // description: {
-    //   type: String,
-    //   required: [true, 'Set a description'],
-    // },
-    // microchips: {
-    //   type: Number,
-    //   required: [true, 'Set microchip'],
-    // },
+    photos: {
+      type: [String],
+    },
+    videos: {
+      type: [String],
+    },
+    breed: {
+      type: String,
+      required: [true, 'Set a breed'],
+    },
+    color: {
+      type: String,
+      required: [true, 'Set a color'],
+    },
+    pattern: {
+      type: String,
+      required: [true, 'Set a pattern'],
+    },
+    adoptionFeeGroup: {
+      type: String,
+      required: [true, 'Set an adoption fee group'],
+    },
+    description: {
+      type: String,
+      required: [true, 'Set a description'],
+    },
+    microchips: {
+      type: Number,
+      required: [true, 'Set microchip'],
+    },
   },
   {
     timestamps: true,
