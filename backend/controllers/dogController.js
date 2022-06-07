@@ -34,26 +34,24 @@ const setDog = asyncHandler(async (req, res) => {
 // @route PUT /api/dog/:id
 // @access Private
 const updateDog = asyncHandler(async (req, res) => {
-  const dog = await Dog.findById(req.params.id);
-  if (!dog) {
-    res.status(400);
-    throw new Error('Dog not found');
+  try {
+    const updatedDog = await Dog.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    res.status(200).json(updatedDog);
+  } catch (err) {
+    throw new Error(err);
   }
-  const updatedDog = await Dog.findByIdAndUpdate(req.params.id, req.body, { new: true });
-  res.status(200).json(updatedDog);
 });
 
 // @desc  Delete Dog
 // @route DELETE /api/dog/:id
 // @access Private
 const deleteDog = asyncHandler(async (req, res) => {
-  const dog = await Dog.findById(req.params.id);
-  if (!dog) {
-    res.status(400);
-    throw new Error('Dog not found');
+  try {
+    const deletedDog = await Dog.findByIdAndDelete(req.params.id);
+    res.status(200).json(deletedDog);
+  } catch (error) {
+    throw new Error(error);
   }
-  const deletedDog = await Dog.findByIdAndDelete(req.params.id);
-  res.status(200).json(deletedDog);
 });
 
 module.exports = {
