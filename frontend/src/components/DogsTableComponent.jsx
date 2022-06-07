@@ -2,9 +2,9 @@ import { useMemo } from 'react';
 import axios from 'axios';
 
 export default function DogsTableComponent() {
-  const data = [];
+  let data = [];
 
-  axios.get('http://localhost:8000/api/dogs').then((x) => console.log(x.data));
+  axios.get('http://localhost:8000/api/dogs').then((x) => console.log(x));
 
   return (
     <table id="customers">
@@ -13,10 +13,14 @@ export default function DogsTableComponent() {
           <th>Name</th>
           <th>Age</th>
         </tr>
-        <tr>
-          <td>Roxy</td>
-          <td>32</td>
-        </tr>
+        {data.map((dog) => {
+          return (
+            <tr>
+              <td>dog.name</td>
+              <td>dog.age</td>
+            </tr>
+          );
+        })}
       </tbody>
     </table>
   );

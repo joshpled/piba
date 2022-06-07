@@ -25,3 +25,11 @@
   background-color: #04aa6d;
   color: white;
 }
+
+form {
+  margin: 10px;
+}
+
+form input {
+  margin: 10px;
+}
