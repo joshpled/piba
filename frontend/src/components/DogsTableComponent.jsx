@@ -1,26 +1,38 @@
-import { useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { genKey } from '@/helpers/calculations';
 
 export default function DogsTableComponent() {
-  let data = [];
+  const [dogData, setDogData] = useState([]);
 
-  axios.get('http://localhost:8000/api/dogs').then((x) => console.log(x));
+  useEffect(() => {
+    axios
+      .get('http://localhost:8000/api/dogs')
+      .then(({ data }) => {
+        setDogData(data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  const renderDogs = () => {
+    return dogData.map((dog) => {
+      return (
+        <tr key={genKey}>
+          <td>{dog.name}</td>
+          <td>{dog.breed}</td>
+        </tr>
+      );
+    });
+  };
 
   return (
     <table id="customers">
       <tbody>
         <tr>
           <th>Name</th>
-          <th>Age</th>
+          <th>Breed</th>
         </tr>
-        {data.map((dog) => {
-          return (
-            <tr>
-              <td>dog.name</td>
-              <td>dog.age</td>
-            </tr>
-          );
-        })}
+        {renderDogs()}
       </tbody>
     </table>
   );

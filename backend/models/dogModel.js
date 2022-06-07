@@ -15,20 +15,24 @@ const dogSchema = mongoose.Schema(
     },
     type: {
       type: String,
-      default: 'Dog',
+      lowercase: true,
+      default: 'dog',
       immutable: true,
       required: true,
     },
     currentLocation: {
       type: String,
+      lowercase: true,
       required: [true, 'Add a Location'],
     },
     sex: {
       type: String,
+      lowercase: true,
       required: [true, 'Male or Female?'],
     },
     status: {
       type: String,
+      lowercase: true,
       required: [true, 'Choose a status'],
     },
     currentWeightPounds: {
@@ -37,6 +41,7 @@ const dogSchema = mongoose.Schema(
     },
     size: {
       type: String,
+      lowercase: true,
       required: [true, 'Set a size category'],
     },
     dateOfBirth: {
@@ -51,27 +56,33 @@ const dogSchema = mongoose.Schema(
     },
     breed: {
       type: String,
+      lowercase: true,
       required: [true, 'Set a breed'],
     },
     color: {
       type: String,
+      lowercase: true,
       required: [true, 'Set a color'],
     },
     pattern: {
       type: String,
+      lowercase: true,
       required: [true, 'Set a pattern'],
     },
     adoptionFeeGroup: {
       type: String,
+      lowercase: true,
       required: [true, 'Set an adoption fee group'],
     },
     description: {
       type: String,
+      lowercase: true,
       required: [true, 'Set a description'],
     },
     microchips: {
       type: Number,
       required: [true, 'Set microchip'],
+      // unique: true
     },
   },
   {

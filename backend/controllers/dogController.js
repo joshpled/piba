@@ -18,10 +18,6 @@ const getDogs = asyncHandler(async (req, res) => {
 // @route POST /api/dogs
 // @access Private
 const setDog = asyncHandler(async (req, res) => {
-  if (!req.body) {
-    throw new Error('Must include a json object');
-  }
-  console.log(req.body);
   try {
     const dog = await Dog.create({ ...req.body, internalId: nanoid() });
     res.status(200).json(dog);

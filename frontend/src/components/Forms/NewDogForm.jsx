@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { baseURL } from '@/helpers/globalUrls';
 
@@ -7,35 +8,42 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 export default function NewDogForm() {
+  let navigate = useNavigate();
+
   const [formEntries, setFormEntries] = useState({
     name: '',
     currentLocation: 'Saint Petersburg',
     sex: 'male',
     status: 'Needs Register',
     currentWeightPounds: '',
-    size: '',
+    size: 'small',
     dateOfBirth: new Date(),
-    // photos: '',
-    // videos: '',
-    // breed: '',
-    // color: '',
-    // pattern: '',
-    // adoptionFeeGroup: '',
-    // description: '',
-    // microchips: '',
+    photos: [],
+    videos: [],
+    breed: '',
+    color: '',
+    pattern: '',
+    adoptionFeeGroup: '',
+    description: '',
+    microchips: 0,
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.table(formEntries);
-    // axios
-    //   .post(baseURL + '/api/dogs', formEntries)
-    //   .then(function (response) {
-    //     console.log(response);
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
+    axios
+      .post(baseURL + '/api/dogs', formEntries, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      .then(function (response) {
+        alert('Saved!');
+        navigate('/dogs');
+      })
+      .catch(function (error) {
+        alert(error.response.data.message);
+        console.error(error.response.data);
+      });
   };
 
   const handleChange = (e) => {
@@ -87,25 +95,17 @@ export default function NewDogForm() {
         <label htmlFor="dateOfBirth">Date of Birth:</label>
         <DatePicker name="dateOfBirth" selected={formEntries.dateOfBirth} onChange={(date, e) => handleDateChange(date, e)} />
         <br />
-        {/* <label htmlFor="name">Name:</label>
-        <input type="text" name="name" value={formEntries.name} onChange={(e) => handleChange(e)} /> <br />
-        <label htmlFor="name">Name:</label>
-        <input type="text" name="name" value={formEntries.name} onChange={(e) => handleChange(e)} /> <br />
-        <label htmlFor="name">Name:</label>
-        <input type="text" name="name" value={formEntries.name} onChange={(e) => handleChange(e)} /> <br />
-        <label htmlFor="name">Name:</label>
-        <input type="text" name="name" value={formEntries.name} onChange={(e) => handleChange(e)} /> <br />
-        <label htmlFor="name">Name:</label>
-        <input type="text" name="name" value={formEntries.name} onChange={(e) => handleChange(e)} /> <br />
-        <label htmlFor="name">Name:</label>
-        <input type="text" name="name" value={formEntries.name} onChange={(e) => handleChange(e)} /> <br />
-        <label htmlFor="name">Name:</label>
-        <input type="text" name="name" value={formEntries.name} onChange={(e) => handleChange(e)} /> <br />
-        <label htmlFor="name">Name:</label>
-        <input type="text" name="name" value={formEntries.name} onChange={(e) => handleChange(e)} /> <br />
-        <label htmlFor="name">Name:</label>
-        <input type="text" name="name" value={formEntries.name} onChange={(e) => handleChange(e)} /> <br />
-        <br /> <br /> */}
+        <label htmlFor="breed">Breed:</label>
+        <input type="text" name="breed" value={formEntries.breed} onChange={(e) => handleChange(e)} /> <br />
+        <label htmlFor="color">Color:</label>
+        <input type="text" name="color" value={formEntries.color} onChange={(e) => handleChange(e)} /> <br />
+        <label htmlFor="pattern">Pattern:</label>
+        <input type="text" name="pattern" value={formEntries.pattern} onChange={(e) => handleChange(e)} /> <br />
+        <label htmlFor="adoptionFeeGroup">Adoption Fee Group:</label>
+        <input type="text" name="adoptionFeeGroup" value={formEntries.adoptionFeeGroup} onChange={(e) => handleChange(e)} /> <br />
+        <label htmlFor="description">Description:</label>
+        <textarea rows="4" cols="50" name="description" value={formEntries.description} onChange={(e) => handleChange(e)} /> <br />
+        <br /> <br />
         <button type="submit">Submit</button>
       </form>
     </div>
