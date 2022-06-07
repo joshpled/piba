@@ -1,4 +1,4 @@
-import DogsTableComponent from '../components/DogsTableComponent';
+import DogsTableComponent from '@/components/DogsTableComponent';
 
 export default function Dogs() {
   return (

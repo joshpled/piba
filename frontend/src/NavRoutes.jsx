@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
-import Home from './pages/Home.jsx';
-import Dogs from './pages/Dogs.jsx';
-import FormBase from './pages/FormBase.jsx';
+import Home from '@/pages/Home.jsx';
+import Dogs from '@/pages/Dogs.jsx';
+import FormBase from '@/pages/FormBase.jsx';
 
 function NavRoutes() {
   return (
