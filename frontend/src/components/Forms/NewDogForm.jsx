@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { baseURL } from '@/globalUrls';
+import { baseURL } from '@/helpers/globalUrls';
 
 import DatePicker from 'react-datepicker';
 

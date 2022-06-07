@@ -1,21 +1,19 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
-import Home from '@/pages/Home.jsx';
-import Dogs from '@/pages/Dogs.jsx';
-import FormBase from '@/pages/FormBase.jsx';
+import { routesDefinitions } from '@/routes/routesDefinitions';
+import { genKey } from '@/helpers/calculations';
 
 function NavRoutes() {
+  const routeMapping = () => {
+    return routesDefinitions.map(({ path, component }) => <Route path={path} element={component} key={genKey()} />);
+  };
   return (
     <>
       <Router>
         <nav>
           <Link to="/dogs">Dogs</Link> | <Link to="/forms">Forms</Link> | <Link to="/">Home</Link>
         </nav>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/dogs" element={<Dogs />} />
-          <Route path="/forms/*" element={<FormBase />} />
-        </Routes>
+        <Routes>{routeMapping()}</Routes>
       </Router>
     </>
   );
