@@ -1,15 +1,17 @@
+//system
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+//npm packages
 import axios from 'axios';
+import DatePicker from 'react-datepicker';
+//local imports
 import { baseURL } from '@/helpers/globalUrls';
 
-import DatePicker from 'react-datepicker';
-
-import 'react-datepicker/dist/react-datepicker.css';
-
+//New Dog Form Component
 export default function NewDogForm() {
+  //router navigate
   let navigate = useNavigate();
-
+  //state
   const [formEntries, setFormEntries] = useState({
     name: '',
     currentLocation: 'Saint Petersburg',
@@ -27,7 +29,7 @@ export default function NewDogForm() {
     description: '',
     microchips: 0,
   });
-
+  //POST Create New Dog
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
@@ -45,12 +47,12 @@ export default function NewDogForm() {
         console.error(error.response.data);
       });
   };
-
+  //Form Changes
   const handleChange = (e) => {
     e.preventDefault();
     setFormEntries({ ...formEntries, [e.target.name]: e.target.value });
   };
-
+  //Form Date Changes
   const handleDateChange = (date, e) => {
     e.preventDefault();
     setFormEntries({ ...formEntries, dateOfBirth: date });

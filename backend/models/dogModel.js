@@ -80,7 +80,7 @@ const dogSchema = mongoose.Schema(
       required: [true, 'Set a description'],
     },
     microchips: {
-      type: Number,
+      type: String,
       required: [true, 'Set microchip'],
       // unique: true
     },
