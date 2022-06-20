@@ -8,6 +8,8 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+node_modules/@types
+./node_modules
 dist
 dist-ssr
 *.local
@@ -23,3 +25,7 @@ dist-ssr
 *.sln
 *.sw?
 .env
+node_modules/
+node/
+**/frontend/node_modules/**
+**/frontend/node/**
