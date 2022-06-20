@@ -1,9 +1,9 @@
-import NewDogForm from '@/components/Forms/NewDogForm';
+import FormBuilder from '@/components/Forms/FormBuilder';
 
 export default function FormBase() {
   return (
     <div>
-      <NewDogForm />
+      <FormBuilder />
     </div>
   );
 }

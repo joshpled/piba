@@ -1,0 +1,93 @@
+export const newDogForm = {
+  method: 'POST',
+  url: '/api/dogs',
+  button: { text: 'Submit', type: 'submit' },
+  state: {
+    name: '',
+    currentLocation: 'Saint Petersburg',
+    sex: 'male',
+    status: 'Needs Register',
+    currentWeightPounds: '',
+    size: 'small',
+    dateOfBirth: new Date(),
+    photos: [],
+    videos: [],
+    breed: '',
+    color: '',
+    pattern: '',
+    adoptionFeeGroup: '',
+    description: '',
+    microchips: 0,
+  },
+  formFields: [
+    {
+      field: 'name',
+      type: 'text',
+      required: true,
+    },
+    {
+      field: 'current_location',
+      type: 'text',
+      required: true,
+    },
+    {
+      field: 'sex',
+      type: 'select',
+      options: ['Male', 'Female'],
+    },
+    {
+      field: 'status',
+      type: 'select',
+      options: [
+        'Needs Register',
+        'Registered',
+        'Needs Medical',
+        'Neutered/Spayed',
+        'Needs Neuter/Spay',
+        'Ready to Foster',
+        'In Foster',
+        'Ready to Adopt',
+        'Adopted',
+      ],
+    },
+    {
+      field: 'current_weight_in_pounds',
+      type: 'number',
+      required: true,
+    },
+    {
+      field: 'size',
+      type: 'select',
+      options: ['Small', 'Medium', 'Large'],
+    },
+    {
+      field: 'date_of_birth',
+      type: 'DatePicker',
+    },
+    {
+      field: 'breed',
+      type: 'text',
+      required: true,
+    },
+    {
+      field: 'color',
+      type: 'text',
+      required: true,
+    },
+    {
+      field: 'pattern',
+      type: 'text',
+      required: true,
+    },
+    {
+      field: 'adoption_fee_group',
+      type: 'text',
+      required: true,
+    },
+    {
+      field: 'description',
+      type: 'textarea',
+      required: true,
+    },
+  ],
+};

@@ -2,50 +2,20 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 //npm packages
-import axios from 'axios';
 import DatePicker from 'react-datepicker';
 //local imports
-import { baseURL } from '@/helpers/globalUrls';
 
 //New Dog Form Component
-export default function NewDogForm() {
+export default function FormBuilder(formObj, apiMethod) {
   //router navigate
   let navigate = useNavigate();
   //state
-  const [formEntries, setFormEntries] = useState({
-    name: '',
-    currentLocation: 'Saint Petersburg',
-    sex: 'male',
-    status: 'Needs Register',
-    currentWeightPounds: '',
-    size: 'small',
-    dateOfBirth: new Date(),
-    photos: [],
-    videos: [],
-    breed: '',
-    color: '',
-    pattern: '',
-    adoptionFeeGroup: '',
-    description: '',
-    microchips: 0,
-  });
+  const [formEntries, setFormEntries] = useState(newDogForm.state);
   //POST Create New Dog
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post(baseURL + '/api/dogs', formEntries, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-      .then(function (response) {
-        alert('Saved!');
-        navigate('/dogs');
-      })
-      .catch(function (error) {
-        alert(error.response.data.message);
-        console.error(error.response.data);
-      });
+    const dogObj = newDog(formEntries);
+    debugger;
   };
   //Form Changes
   const handleChange = (e) => {
