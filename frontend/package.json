@@ -9,7 +9,7 @@
     "install:clean": "rm -rf node_modules package-lock.json && npm install",
     "test": "jest",
     "jest:watch": "jest --watch",
-    "prepare": "husky install"
+    "prepare": "cd .. && husky install frontend/.husky"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.2",
