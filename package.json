@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
-    "install:clean": "rm -rf node_modules package-lock.json && npm install"
+    "install:clean": "rm -rf node_modules package-lock.json && npm install",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "All-Purpose Apps (https://www.allpurposeapps.com/)",
@@ -19,10 +20,11 @@
     "express": "^4.18.1",
     "express-async-handler": "^1.2.0",
     "mongoose": "^6.4.0",
-    "nanoid": "^4.0.0"
+    "nanoid": "~3.3.4"
   },
   "devDependencies": {
     "@faker-js/faker": "^7.2.0",
-    "nodemon": "^2.0.16"
+    "nodemon": "^2.0.16",
+    "husky": "^8.0.0"
   }
 }

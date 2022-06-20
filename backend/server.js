@@ -18,4 +18,7 @@ app.use('/api/dogs', require('./routes/dogRoutes'));
 
 app.use(errorHandler);
 
-app.listen(port, () => console.log(`Running on ${port}`));
+app.listen(port, () => {
+  console.log(`Running on ${port}`);
+  console.log(`SHOULD BE GOOD!`.green.bold);
+});

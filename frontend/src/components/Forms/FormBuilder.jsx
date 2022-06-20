@@ -6,15 +6,17 @@ import DatePicker from 'react-datepicker';
 //local imports
 
 //New Dog Form Component
-export default function FormBuilder(formObj, apiMethod) {
+export default function FormBuilder({ formObj, apiMethod }) {
+  const { method, url, button, state, formFields } = formObj
+  // debugger;
   //router navigate
   let navigate = useNavigate();
   //state
-  const [formEntries, setFormEntries] = useState(newDogForm.state);
+  const [formEntries, setFormEntries] = useState(state);
   //POST Create New Dog
   const handleSubmit = (e) => {
     e.preventDefault();
-    const dogObj = newDog(formEntries);
+    apiMethod(formEntries);
     debugger;
   };
   //Form Changes
@@ -27,6 +29,12 @@ export default function FormBuilder(formObj, apiMethod) {
     e.preventDefault();
     setFormEntries({ ...formEntries, dateOfBirth: date });
   };
+
+
+
+  const createTextInputs = ({field, type, required}) => {
+    return <input type={type} name="currentLocation" value={formEntries.currentLocation} onChange={(e) => handleChange(e)} required={} /> 
+  }
   return (
     <div>
       <form onSubmit={(e) => handleSubmit(e)} id="form">

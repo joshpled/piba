@@ -1,4 +1,4 @@
-import genKey from './calculations';
-import capitalize from './textTransformations';
+import { genKey } from './calculations';
+import { toCapitalizeEach, toCamelCase } from './textTransformations';
 
-export { genKey, capitalize };
+export { genKey, toCapitalizeEach, toCamelCase };
