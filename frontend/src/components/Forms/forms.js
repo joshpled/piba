@@ -1,6 +1,4 @@
 export const newDogForm = {
-  method: 'POST',
-  url: '/api/dogs',
   button: { text: 'Submit', type: 'submit' },
   state: {
     name: '',

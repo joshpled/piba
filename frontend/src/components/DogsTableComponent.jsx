@@ -2,10 +2,10 @@
 import { useMemo } from 'react';
 //npm packages
 import { ToastContainer, toast } from 'react-toastify';
+import { nanoid } from 'nanoid';
 //redux/state imports
 import { useGetDogsQuery, useDeleteDogMutation } from '@/store/apiSlice';
 //local imports
-import { genKey } from '@/helpers/calculations';
 //components
 import DeleteDog from './DeleteDog';
 
@@ -30,7 +30,7 @@ export default function DogsTableComponent() {
     if (dogData) {
       return dogData.map((dog) => {
         return (
-          <tr key={genKey()}>
+          <tr key={nanoid()}>
             <td>{dog.name}</td>
             <td>{dog.breed}</td>
             <td>

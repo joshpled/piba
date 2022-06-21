@@ -1,11 +1,12 @@
+//npm imports
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-
+import { nanoid } from 'nanoid';
+//import locals
 import { routesDefinitions } from '@/routes/routesDefinitions';
-import { genKey } from '@/helpers/calculations';
 
 function NavRoutes() {
   const routeMapping = () => {
-    return routesDefinitions.map(({ path, component }) => <Route path={path} element={component} key={genKey()} />);
+    return routesDefinitions.map(({ path, component }) => <Route path={path} element={component} key={nanoid()} />);
   };
   return (
     <>
