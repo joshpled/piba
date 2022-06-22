@@ -2,7 +2,7 @@
 import { Routes, Route } from 'react-router-dom';
 
 //local
-import { newDogForm } from '@/components/Forms/forms';
+import { newDogForm } from '../information/forms';
 import { newDog } from '@/db/apiMethods';
 //components
 import FormBuilder from '@/components/Forms/FormBuilder';

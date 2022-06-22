@@ -1,8 +1,9 @@
 //system
-import { useState } from 'react';
+import { useState, Fragment } from 'react';
 import { useNavigate } from 'react-router-dom';
 //npm packages
 import DatePicker from 'react-datepicker';
+import { nanoid } from 'nanoid';
 //local imports
 import { toCapitalizeEach, toCamelCase } from '@/helpers/textTransformations';
 
@@ -37,7 +38,11 @@ export default function FormBuilder({ formObj, apiMethod }) {
     return (
       <select type={type} name={field} value={formEntries[toCamelCase(field)]} onChange={(e) => handleChange(e)}>
         {options.map((option) => {
-          return <option value={option}>{option}</option>;
+          return (
+            <option value={option} key={nanoid()}>
+              {option}
+            </option>
+          );
         })}
       </select>
     );
@@ -47,37 +52,37 @@ export default function FormBuilder({ formObj, apiMethod }) {
     return formFields.map((field) => {
       if (field.type === 'text' || field.type === 'number') {
         return (
-          <>
+          <Fragment key={nanoid()}>
             <label htmlFor={field.field}>{toCapitalizeEach(field.field)}: </label>
             {createInputs(field)}
             <br />
-          </>
+          </Fragment>
         );
       }
       if (field.type === 'select') {
         return (
-          <>
+          <Fragment key={nanoid()}>
             <label htmlFor={field.field}>{toCapitalizeEach(field.field)}: </label>
             {createSelectionInputs(field)}
             <br />
-          </>
+          </Fragment>
         );
       }
       if (field.type === 'DatePicker') {
         return (
-          <>
+          <Fragment key={nanoid()}>
             <label htmlFor={field.field}>{toCapitalizeEach(field.field)}: </label>
             <DatePicker name={field.field} selected={formEntries[toCamelCase(field.field)]} onChange={(date, e) => handleDateChange(date, e)} />
             <br />
-          </>
+          </Fragment>
         );
       }
       if (field.type === 'textarea') {
         return (
-          <>
+          <Fragment key={nanoid()}>
             <label htmlFor={field.field}>{toCapitalizeEach(field.field)}: </label>
             <textarea rows="4" cols="50" name={field.field} value={formEntries[toCamelCase(field.field)]} onChange={(e) => handleChange(e)} /> <br />
-          </>
+          </Fragment>
         );
       }
     });
