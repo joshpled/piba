@@ -1,6 +1,6 @@
 import Dogs from '@/pages/Dogs';
-import FormBase from '@/pages/FormBase';
 import Home from '@/pages/Home';
+import NewDogForm from '@/components/Forms/NewDogForm';
 
 export const routesDefinitions = [
   {
@@ -12,7 +12,7 @@ export const routesDefinitions = [
     component: <Dogs />,
   },
   {
-    path: '/forms/*',
-    component: <FormBase />,
+    path: '/forms/new_dog',
+    component: <NewDogForm />,
   },
 ];
