@@ -1,9 +1,9 @@
-import DogsTableComponent from '@/components/DogsTableComponent';
+import DogsTable from '@/components/DogsTable';
 
 export default function Dogs() {
   return (
     <div>
-      <DogsTableComponent />
+      <DogsTable />
     </div>
   );
 }

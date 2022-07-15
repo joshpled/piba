@@ -10,7 +10,7 @@ import { useGetDogsQuery, useDeleteDogMutation } from '@/store/apiSlice';
 import DeleteDog from './DeleteDog';
 
 //Dogs Table Component
-export default function DogsTableComponent() {
+export default function DogsTable() {
   //API Redux Calls
   const { data: dogs, isLoading, isSuccess, isError, error } = useGetDogsQuery();
   const [removeDog, results] = useDeleteDogMutation();

@@ -12,7 +12,7 @@ export const routesDefinitions = [
     component: <Dogs />,
   },
   {
-    path: '/forms/new_dog',
+    path: '/forms',
     component: <NewDogForm />,
   },
 ];
